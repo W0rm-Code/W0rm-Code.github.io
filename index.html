@@ -1,6 +1,45 @@
-fetch('https://api.github.com/users/W0rm-Code/repos')
-    .then(response => response.json())
-    .then(repos => {
-      // repos is an array of repository objects
-    });
-  
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Repositories</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      fetch('https://api.github.com/users/W0rm-Code/repos')
+        .then(response => response.json())
+        .then(repos => {
+          // repos is an array of repository objects
+          const container = document.getElementById('container');
+          repos.forEach(repo => {
+            // Create a div element for the repository
+            const div = document.createElement('div');
+            div.classList.add('repo-box');
+            
+            // Add the repository name and description
+            const name = document.createElement('h3');
+            name.innerText = repo.name;
+            div.appendChild(name);
+            const description = document.createElement('p');
+            description.innerText = repo.description;
+            div.appendChild(description);
+            
+            // Add the repository icon
+            const icon = document.createElement('img');
+            icon.src = 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg';
+            icon.classList.add('repo-icon');
+            div.appendChild(icon);
+            
+            // Add the repository link
+            const link = document.createElement('a');
+            link.href = repo.html_url;
+            link.innerText = 'View on GitHub';
+            div.appendChild(link);
+            
+            // Add the repository box to the container
+            container.appendChild(div);
+          });
+        });
+    </script>
+  </body>
+</html>
