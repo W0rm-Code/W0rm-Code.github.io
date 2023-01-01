@@ -24,3 +24,12 @@ If you have any suggestions or find any bugs, please open an issue or submit a p
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+You can contact me through the following channels:
+
+- Email: [email@example.com](mailto:email@example.com)
+- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
+- LinkedIn: [linkedin profile](https://linkedin.com/in/linkedin-profile)
+- GitHub: [GitHub icon](https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg) [@githubhandle](https://github.com/githubhandle)
