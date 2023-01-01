@@ -32,4 +32,4 @@ You can contact me through the following channels:
 - Email: [email@example.com](mailto:email@example.com)
 - Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
 - LinkedIn: [linkedin profile](https://linkedin.com/in/linkedin-profile)
-- GitHub: ![GitHub icon](https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg) [@githubhandle](https://github.com/githubhandle)
+- GitHub: [GitHub icon](https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg) [@githubhandle](https://github.com/githubhandle)
