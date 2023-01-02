@@ -1,45 +1,248 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My Repositories</title>
-  </head>
-  <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worm-Code</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta property="twitter:title" content="Worm-Code">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="">
+    <style>
+        @media screen and (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+        }
+
+        :root {
+            --light-bg-color: #eee;
+            --light-text-color: #333;
+            --light-link-color: #0066cc;
+            --dark-bg-color: #333;
+            --dark-text-color: #eee;
+            --dark-link-color: #4dd2ff;
+        }
+
+        body {
+            background-color: var(--light-bg-color);
+            color: var(--light-text-color);
+            font-family: Arial, sans-serif;
+            font: bold;
+        }
+
+        a {
+            color: var(--light-link-color);
+        }
+
+        .repo-box {
+            background-color: lighten(var(--light-bg-color), 10%);
+            color: var(--light-text-color);
+            margin: 40px 0;
+        }
+
+        .dark .repo-box {
+            background-color: darken(var(--dark-bg-color), 10%);
+            color: var(--dark-text-color);
+        }
+
+        #mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        header {
+            background-color: var(--light-bg-color);
+            color: var(--light-text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav {
+            margin-left: 20px;
+        }
+
+        .buttons {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            top: 20px;
+            right: 110px;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .github {
+            display: inline-flex;
+            height: 50px;
+            padding: 0;
+            background: #6e5494;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .github:hover {
+            background: #62458d;
+        }
+
+        .github:active {
+            background: #513679;
+        }
+
+        .discord {
+            display: inline-flex;
+            height: 50px;
+            padding: 0;
+            background: #6C82CC;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .discord:hover {
+            background: #6478BC;
+        }
+
+        .discord:active {
+            background: #5F71AD;
+        }
+
+        .button__text,
+        .button__icon {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 24px;
+            color: #fff;
+            height: 100%;
+        }
+
+        .button__icon {
+            font-size: 1.5em;
+            background: rgba(0, 0, 0, 0.08)
+        }
+
+        .button__text,
+        .button__icon {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 24px;
+            color: #fff;
+            height: 100%;
+        }
+
+        .button__icon {
+            font-size: 1.5em;
+            background: rgba(0, 0, 0, 0.08)
+        }
+    </style>
+</head>
+<header>
+    <h1>Worm-Code</h1>
+    <nav>
+        <b>
+            <a href="#">Home</a> |
+            <a href="#">About</a> |
+            <a href="#">Contact</a>
+        </b>
+        <div class="buttons">
+            <div type="github" class="github">
+                <a class="button__text" href="https://github.com/W0rm-Code" target="_blank">Github</a>
+                <span class="button__icon">
+                    <ion-icon name="logo-github"></ion-icon>
+                </span>
+            </div>
+            <div type="discord" class="discord">
+                <a class="button__text" href="https://discord.gg/aNVstg7j3j" target="_blank">Discord</a>
+                <span class="button__icon">
+                    <ion-icon name="logo-discord"></ion-icon>
+                </span>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+
+    <img width="75px" height="75px" id="mode-toggle" src="https://cdn-icons-png.flaticon.com/128/5132/5132228.png"
+        alt="Toggle light/dark mode">
+
     <div id="container"></div>
     <script>
-      fetch('https://api.github.com/users/W0rm-Code/repos')
-        .then(response => response.json())
-        .then(repos => {
-          // repos is an array of repository objects
-          const container = document.getElementById('container');
-          repos.forEach(repo => {
-            // Create a div element for the repository
-            const div = document.createElement('div');
-            div.classList.add('repo-box');
-            
-            // Add the repository name and description
-            const name = document.createElement('h3');
-            name.innerText = repo.name;
-            div.appendChild(name);
-            const description = document.createElement('p');
-            description.innerText = repo.description;
-            div.appendChild(description);
-            
-            // Add the repository icon
-            const icon = document.createElement('img');
-            icon.src = 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg';
-            icon.classList.add('repo-icon');
-            div.appendChild(icon);
-            
-            // Add the repository link
-            const link = document.createElement('a');
-            link.href = repo.html_url;
-            link.innerText = 'View on GitHub';
-            div.appendChild(link);
-            
-            // Add the repository box to the container
-            container.appendChild(div);
-          });
+        const root = document.documentElement;
+        root.style.setProperty('--light-bg-color', '#333');
+        root.style.setProperty('--light-text-color', '#eee');
+        root.style.setProperty('--light-link-color', '#4dd2ff');
+        root.style.setProperty('--dark-bg-color', '#eee');
+        root.style.setProperty('--dark-text-color', '#333');
+        root.style.setProperty('--dark-link-color', '#0066cc');
+
+        const toggle = document.getElementById('mode-toggle');
+        toggle.addEventListener('click', () => {
+            if (root.style.getPropertyValue('--light-bg-color') === '#eee') {
+                root.style.setProperty('--light-bg-color', '#333');
+                root.style.setProperty('--light-text-color', '#eee');
+                root.style.setProperty('--dark-bg-color', '#eee');
+                root.style.setProperty('--dark-text-color', '#333');
+            } else {
+                root.style.setProperty('--light-bg-color', '#eee');
+                root.style.setProperty('--light-text-color', '#333');
+                root.style.setProperty('--dark-bg-color', '#333');
+                root.style.setProperty('--dark-text-color', '#eee');
+            }
         });
+        fetch('https://api.github.com/users/W0rm-Code/repos')
+            .then(response => response.json())
+            .then(repos => {
+                const container = document.getElementById('container');
+                repos.forEach(repo => {
+                    const box = document.createElement('div');
+                    box.classList.add('repo-box');
+
+                    const name = document.createElement('h2');
+                    name.innerText = repo.name;
+
+                    const description = document.createElement('p');
+                    description.innerText = repo.description;
+
+                    const link = document.createElement('a');
+                    link.href = repo.html_url;
+                    link.innerText = 'View on GitHub';
+
+                    const icon = document.createElement('img');
+                    icon.style.height = '50px';
+                    icon.style.width = '50px';
+                    icon.src = 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg';
+                    icon.alt = 'Github-Icon';
+                    icon.className = 'Github-picture';
+
+                    //box.appendChild(icon);
+                    box.appendChild(name);
+                    box.appendChild(description);
+                    box.appendChild(link);
+                    container.appendChild(box);
+                });
+            });
     </script>
-  </body>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
 </html>
